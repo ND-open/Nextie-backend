@@ -1,0 +1,28 @@
+version: '3'  
+services:
+  # nextie-backend:
+  #   build: ./
+  #   volumes:
+  #     - .:/app
+  #   ports:
+  #     - "3001:3000"
+  #   restart: always
+  #   networks:
+  #     - nextie_net
+
+  nextie-frontend:
+    build: ./Nextie-frontend
+    volumes:
+      - ./Nextie-frontend:/front
+      - "/front/node_modules"
+    # depends_on:
+    # - nextie-backend
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - nextie_net
+
+networks:
+  nextie_net:
+      driver: bridge
